@@ -1,70 +1,63 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
-
 import { Context } from "../store/appContext.jsx";
+import { Jumbotron } from "./jumbotron.jsx";
 
 export class HomeList extends React.Component {
 	render() {
 		return (
-			<div className="container w-50">
-				<ul className="list-group">
-					<Context.Consumer>
-						{({ store, actions }) => {
-							return store.events.map((item, index) => {
-								return (
-									<li key={index} className="list-group-item">
-										<div className="card">
-											<div className="card-header">
-												<Moment format="MMM DD">
-													{item.meta_keys.day}
+			<div>
+				<Jumbotron />
+				<Context.Consumer>
+					{({ store, actions }) => {
+						return store.events.map((item, index) => {
+							return (
+								<div
+									className="d-flex flex-row justify-content-center"
+									key={index}>
+									<div
+										className="card m-3"
+										style={{ width: "30rem" }}>
+										<div className="card-header">
+											<Moment format="MMM Do">
+												{item.meta_keys.day}
+											</Moment>
+										</div>
+										<div className="card-body d-inline-flex justify-content-start">
+											<p className="card-text mr-3">
+												<Moment
+													format="LT"
+													parse="HH:mm:ss">
+													{item.meta_keys.time}
 												</Moment>
-											</div>
-											<div className="d-flex p-2">
-												<div>{item.meta_keys.time}</div>
-												<div className="col-1" />
-												<div className="d-block">
-													<div>
-														<Link
-															to={
-																"/" +
-																item.meta_keys
-																	._meetup +
-																"/" +
-																item.post_title
-															}>
-															<span>
-																{
-																	item.post_title
-																}
-															</span>
-														</Link>
-													</div>
-													<div>
-														<Link
-															to={
-																"/" +
-																item.meta_keys
-																	._meetup
-															}>
-															<span>
-																{
-																	item
-																		.meta_keys
-																		._meetup
-																}
-															</span>
-														</Link>
-													</div>
-												</div>
+											</p>
+											<div className="d-block ml-3">
+												<Link
+													to={
+														"/eventdetail/" + index
+													}>
+													<h5 className="card-title">
+														{item.post_title}
+													</h5>
+												</Link>
+												<Link
+													to={
+														"/meetup/" +
+														item.meta_keys._meetup
+													}>
+													<h6 className="card-subtitle">
+														{item.meta_keys._meetup}
+													</h6>
+												</Link>
 											</div>
 										</div>
-									</li>
-								);
-							});
-						}}
-					</Context.Consumer>
-				</ul>
+									</div>
+								</div>
+							);
+						});
+					}}
+				</Context.Consumer>
 			</div>
 		);
 	}
