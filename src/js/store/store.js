@@ -16,12 +16,13 @@ const getState = ({ getStore, setStore }) => {
 				return events;
 			},
 
-			findMeetUp: (itemID, index) => {
+			findMeetUp: (item, index) => {
 				const store = getStore();
-
-				if (store.events._meetup == store.meetups.ID) {
-					let meetupId = store.meetups.post_title;
-					return meetupId;
+				for (let i = 0; i < store.meetups.length; i++) {
+					if (item == store.meetups[i].ID) {
+						let meetupName = store.meetups[i].post_title;
+						return meetupName;
+					}
 				}
 			}
 		}

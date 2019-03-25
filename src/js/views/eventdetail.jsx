@@ -8,12 +8,12 @@ import Moment from "react-moment";
 export class EventDetails extends React.Component {
 	render() {
 		return (
-			<div className="container-fluid">
+			<div>
 				<Context.Consumer>
 					{({ store, actions }) => {
 						return (
-							<div className="container">
-								<div className="jumbotron jumbotron-fluid mt-2 text-light bg-dark">
+							<div>
+								<div className="jumbotron jumbotron-fluid text-white bg-dark">
 									<div className="container">
 										<div className="row">
 											<div className="col-9">
@@ -37,23 +37,21 @@ export class EventDetails extends React.Component {
 													}
 												</h1>
 												<p className="lead">
-													Meetup Name
+													Meetup{" "}
+													{
+														store.events[
+															this.props.match
+																.params.theid
+														].meta_keys._meetup
+													}
 												</p>
-												<Link to="/">
-													<span
-														className="btn btn-primary btn-sm"
-														href="#"
-														role="button">
-														Back home
-													</span>
-												</Link>
 											</div>
-											<div className="col-3">
+											<div className="w-25 h-25">
 												<div
 													className="container bg-secondary"
 													style={{
-														height: "6rem",
-														width: "10rem"
+														height: "8rem",
+														width: "12rem"
 													}}>
 													<h5 className="text-center">
 														People Going
@@ -73,7 +71,7 @@ export class EventDetails extends React.Component {
 										</div>
 									</div>
 								</div>
-								<div className="container-fluid">
+								<div className="container">
 									<div className="row">
 										<div className="col">
 											<h2 className="display-6">
@@ -84,7 +82,7 @@ export class EventDetails extends React.Component {
 										</div>
 									</div>
 									<div className="row">
-										<div className="col-8">
+										<div className="col-10">
 											<p>
 												{
 													store.events[
@@ -94,26 +92,29 @@ export class EventDetails extends React.Component {
 												}
 											</p>
 										</div>
-										<div className="col-4">
-											<Moment
-												format="LT"
-												parse="HH:mm:ss">
-												{
-													store.events[
-														this.props.match.params
-															.theid
-													].meta_keys.time
-												}
-											</Moment>
-											<br />
-											<Moment format="MMM Do">
-												{
-													store.events[
-														this.props.match.params
-															.theid
-													].meta_keys.day
-												}
-											</Moment>
+										<div className="col-2">
+											<div className="shadow p-2">
+												<i className="fa far fa-clock" />
+												<Moment format="MMM Do">
+													{
+														store.events[
+															this.props.match
+																.params.theid
+														].meta_keys.day
+													}
+												</Moment>
+												<br />
+												<Moment
+													format="LT"
+													parse="HH:mm:ss">
+													{
+														store.events[
+															this.props.match
+																.params.theid
+														].meta_keys.time
+													}
+												</Moment>
+											</div>
 										</div>
 									</div>
 								</div>

@@ -9,37 +9,30 @@ import "../../styles/home.css";
 export class MeetUpList extends React.Component {
 	render() {
 		return (
-			<div className="container">
-				<div className="container-fluid">
+			<div>
+				<div>
 					<Context.Consumer>
-						{({ store }) => {
+						{({ store, actions }) => {
 							return (
-								<div className="container">
-									<div className="jumbotron jumbotron-fluid mt-2 text-light bg-dark">
-										<div className="container">
-											<div className="d-flex flex-row-reverse justify-content-between">
-												<div className="p-2">
-													<h1 className="display-4">
-														{
-															store.meetups
-																.post_title
-														}
-													</h1>
-													<p className="lead">
-														Miami, FL
-													</p>
-													<Link to="/">
-														<span
-															className="btn btn-primary btn-sm"
-															href="/"
-															role="button">
-															Back home
-														</span>
-													</Link>
-												</div>
-												<div className="p-2">
-													<img src="https://via.placeholder.com/400x300.png" />
-												</div>
+								<div className="jumbotron jumbotron-fluid text-white bg-dark">
+									<div className="container">
+										<div className="d-inline-flex justify-content-between">
+											<div className="mr-4">
+												<img src="https://via.placeholder.com/400x300.png" />
+											</div>
+											<div className="p-2">
+												<h1>
+													{actions.findMeetUp(
+														this.props.match.params
+															.theid
+													)}
+												</h1>
+												<p className="text-secondary mb-0">
+													<u>Location</u>
+												</p>
+												<p className="lead">
+													Miami, FL
+												</p>
 											</div>
 										</div>
 									</div>
@@ -48,7 +41,7 @@ export class MeetUpList extends React.Component {
 						}}
 					</Context.Consumer>
 				</div>
-				<div className="d-flex flex-row justify-content-center">
+				<div>
 					<Context.Consumer>
 						{({ store, actions }) => {
 							return actions
@@ -80,7 +73,7 @@ export class MeetUpList extends React.Component {
 													<div className="d-block ml-3">
 														<Link
 															to={
-																"/event/" +
+																"/eventdetail/" +
 																index
 															}>
 															<h5 className="card-title">
@@ -91,7 +84,7 @@ export class MeetUpList extends React.Component {
 														</Link>
 														<Link
 															to={
-																"/meetup/" +
+																"/meetuplist/" +
 																index
 															}>
 															<h6 className="card-subtitle">

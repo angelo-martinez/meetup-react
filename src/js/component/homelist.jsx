@@ -43,7 +43,7 @@ export class HomeList extends React.Component {
 												</Link>
 												<Link
 													to={
-														"/meetup/" +
+														"/meetuplist/" +
 														item.meta_keys._meetup
 													}>
 													<h6 className="card-subtitle">
