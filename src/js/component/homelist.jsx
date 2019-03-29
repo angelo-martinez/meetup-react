@@ -47,6 +47,7 @@ export class HomeList extends React.Component {
 														item.meta_keys._meetup
 													}>
 													<h6 className="card-subtitle">
+														Meetup:{" "}
 														{item.meta_keys._meetup}
 													</h6>
 												</Link>

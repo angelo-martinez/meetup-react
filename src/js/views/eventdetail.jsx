@@ -48,14 +48,12 @@ export class EventDetails extends React.Component {
 											</div>
 											<div className="w-25 h-25">
 												<div
-													className="container bg-secondary"
+													className="container bg-secondary text-center"
 													style={{
 														height: "8rem",
 														width: "12rem"
 													}}>
-													<h5 className="text-center">
-														People Going
-													</h5>
+													<h5>People Going</h5>
 													<button
 														type="button"
 														className="btn btn-primary btn-sm">
