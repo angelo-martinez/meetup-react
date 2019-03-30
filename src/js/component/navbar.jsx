@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LogIn from "./login.jsx";
 
 export class Navbar extends React.Component {
 	render() {
@@ -9,9 +10,7 @@ export class Navbar extends React.Component {
 					<span className="navbar-brand mb-0 h1">Home</span>
 				</Link>
 				<div className="ml-auto">
-					<Link to="/demo">
-						<button className="btn btn-primary">Log In</button>
-					</Link>
+					<button onClick={LogIn}>Log In</button>
 				</div>
 			</nav>
 		);

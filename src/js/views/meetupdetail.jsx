@@ -88,7 +88,8 @@ export class MeetUpList extends React.Component {
 																index
 															}>
 															<h6 className="card-subtitle">
-																Meetup:{" "}{
+																Meetup:{" "}
+																{
 																	item
 																		.meta_keys
 																		._meetup
